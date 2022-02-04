@@ -108,3 +108,5 @@ To deploy atlantis we can use the official atlantis module for terraform [provid
 a full example on github is available here
 
 https://github.com/terraform-aws-modules/terraform-aws-atlantis/tree/master/examples/github-complete
+
+
