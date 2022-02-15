@@ -1,0 +1,16 @@
+# ATLANTIS REPO CONFIG FILE SAMPLE
+# workflow name matches the server config workflow
+
+version: 3
+workflows:
+  custom:
+    plan:
+      steps:
+      - init:
+          extra_args: ["-backend-config", "env/sandbox.backend.tfvars"]
+      - plan:
+          extra_args: ["-var-file","env/dev.tfvars"]
+    apply:
+      steps:
+      - apply:
+          extra_args: ["-var-file","env/dev.tfvars"]

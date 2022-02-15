@@ -103,8 +103,12 @@ aws iam get-policy --policy-arn $(terraform output -raw policy_arn)
 Further info https://www.runatlantis.io/guide
 
 # Deploy atlantis on AWS Fargate
-To deploy atlantis we can use the official atlantis module for terraform [provided by AWS](https://github.com/terraform-aws-modules/terraform-aws-atlantis)
+To deploy atlantis in sandbox account, we make use of the official atlantis module for terraform provided by AWS, with the approach ["As a part of an existing AWS infrastructure"](https://github.com/terraform-aws-modules/terraform-aws-atlantis#run-atlantis-as-a-part-of-an-existing-aws-infrastructure-use-existing-vpc)
 
-a full example on github is available here
+In "infra/infra.tf" you will see how it is used, providing
+- vpc_id, private subnets (app-subnets), and public subnets
+- the route53 HZ in use to validate the certificate attached to the ALB
+- github user and token in use for this atlantis poc, stored in SecretsManager with id "atlantisGithubCreds"; # we can remove the secret and store the token in SSM Parameter /atlantis/github/user/token  or another param in SSM, whose name can be provided to the module with `atlantis_github_user_token_ssm_parameter_name`
 
-https://github.com/terraform-aws-modules/terraform-aws-atlantis/tree/master/examples/github-complete
+
+
