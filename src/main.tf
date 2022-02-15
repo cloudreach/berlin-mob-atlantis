@@ -21,7 +21,7 @@ resource "aws_iam_policy" "berlin-mob-atlantis-policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action   = "ec2:Describe*"
+        Action   = ["ec2:Describe*", "ec2:List*"]
         Effect   = "Allow"
         Resource = "*"
       },
@@ -32,6 +32,9 @@ resource "aws_iam_policy" "berlin-mob-atlantis-policy" {
 output "policy_arn" {
   value = aws_iam_policy.berlin-mob-atlantis-policy.id
 }
+
+
+
 
 
 

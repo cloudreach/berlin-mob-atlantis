@@ -112,3 +112,4 @@ In "infra/infra.tf" you will see how it is used, providing
 
 
 
+https://github.com/terraform-aws-modules/terraform-aws-atlantis/tree/master/examples/github-complete
